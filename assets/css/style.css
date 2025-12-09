@@ -56,6 +56,17 @@ nav a.active {
   color: #f9fbfb;
 }
 
+.theme-toggle {
+  cursor:pointer; 
+  padding:6px 12px; 
+  border:none; 
+  border-radius:6px; 
+  background:#23665a; 
+  color:#fff; 
+  font-weight:600; 
+  margin-right:15px;
+}
+
 .hero {
   width: 100%;
   height: auto;
