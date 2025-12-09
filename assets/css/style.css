@@ -109,6 +109,43 @@ h2 {
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7);
 }
 
+/* Темна тема */
+body.dark {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .site-header,
+body.dark .site-footer {
+  background: #1f1f1f;
+  color: #a0d8c0;
+  box-shadow: none;
+}
+
+body.dark nav a {
+  color: #a0d8c0;
+}
+
+body.dark nav a:hover,
+body.dark nav a.active {
+  background-color: #3a6b59;
+  color: #f0f0f0;
+}
+
+body.dark .news-item {
+  background: #242424;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.4);
+}
+
+body.dark .news-item:hover {
+  box-shadow: 0 4px 15px rgb(0 0 0 / 0.7);
+}
+
+body.dark .small {
+  color: #a0cbb5;
+}
+
+
 /* Адаптивність */
 @media (max-width: 600px) {
   nav {
