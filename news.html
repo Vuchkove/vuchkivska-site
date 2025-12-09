@@ -1,49 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Новини — Вучківська гімназія</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <h1>Новини</h1>
-      <nav>
-        <a href="index.html">Головна</a>
-        <a href="news.html">Новини</a>
-        <a href="documents.html">Документи</a>
-        <a href="contacts.html">Контакти</a>
-      </nav>
-    </div>
+    <h1>Вучківська гімназія</h1>
+    <nav>
+      <a href="index.html">Головна</a>
+      <a href="news.html" class="active">Новини</a>
+      <a href="documents.html">Документи</a>
+      <a href="contacts.html">Контакти</a>
+    </nav>
   </header>
 
   <main class="container">
-    <section>
-      <p>Сюди додаються накази, оголошення та інші документи. Щоб додати новину — просто завантажте PDF або DOCX файл у папку <code>/news</code> і додайте запис у <code>news.json</code>.</p>
-      <div id="news-list">Завантаження новин…</div>
-    </section>
+    <h2>Останні новини</h2>
+    <div id="news-container">
+      <!-- Новини динамічно завантажуються сюди -->
+    </div>
   </main>
 
-  <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v16.0"></script>
-
-<div class="fb-page" 
-     data-href="https://www.facebook.com/profile.php?id=100078740501515" 
-     data-tabs="timeline" 
-     data-width="500" 
-     data-height="600" 
-     data-small-header="false" 
-     data-adapt-container-width="true" 
-     data-hide-cover="false" 
-     data-show-facepile="true">
-</div>
-
   <footer class="site-footer">
-    <div class="container">
-      <p>© Вучківська гімназія</p>
-    </div>
+    © Вучківська гімназія, 2025
   </footer>
 
   <script src="assets/js/news-loader.js"></script>
