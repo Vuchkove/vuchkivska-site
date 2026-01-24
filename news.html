@@ -1,40 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Новини — Вучківська гімназія</title>
-  <link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-  <header class="site-header">
-    <h1>Вучківська гімназія</h1>
-    <nav>
-      <a href="index.html">Головна</a>
-      <a href="news.html" class="active">Новини</a>
-      <a href="documents.html">Документи</a>
-      <a href="contacts.html">Контакти</a>
-    </nav>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Новини — Вучківська гімназія</title>
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="container">
+				<h1>Вучківська гімназія</h1>
+				<button id="theme-toggle" aria-label="Перемикач теми" class="theme-toggle">Тема</button>
+				<nav>
+					<a href="index.html">Головна</a>
+					<a href="news.html" class="active">Новини</a>
+					<a href="documents.html">Документи</a>
+					<a href="contacts.html">Контакти</a>
+				</nav>
+			</div>
+		</header>
 
-    <button id="theme-toggle" aria-label="Перемикач теми" class="theme-toggle">
-      Тема
-    </button>
-    
-  </header>
-  
+		<main class="container">
+			<h2>Останні новини</h2>
+			<div id="news-container">
+				<!-- Новини динамічно завантажуються сюди -->
+			</div>
+		</main>
 
-  <main class="container">
-    <h2>Останні новини</h2>
-    <div id="news-container">
-      <!-- Новини динамічно завантажуються сюди -->
-    </div>
-  </main>
+		<footer class="site-footer">© Вучківська гімназія, 2025</footer>
 
-  <footer class="site-footer">
-    © Вучківська гімназія, 2025
-  </footer>
-
-  <script src="assets/js/news-loader.js"></script>
-  <script src="assets/js/theme-toggle.js"></script>
-</body>
+		<script src="assets/js/news-loader.js"></script>
+		<script src="assets/js/theme-toggle.js"></script>
+	</body>
 </html>

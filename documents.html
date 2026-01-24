@@ -1,40 +1,42 @@
 <!doctype html>
 <html lang="uk">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Документи — Вучківська гімназія</title>
-  <link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Документи</h1>
-      <nav>
-        <a href="index.html">Головна</a>
-        <a href="news.html">Новини</a>
-        <a href="documents.html">Документи</a>
-        <a href="contacts.html">Контакти</a>
-      </nav>
-    </div>
-  </header>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Документи — Вучківська гімназія</title>
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="container">
+				<h1>Документи</h1>
+				<button id="theme-toggle" aria-label="Перемикач теми" class="theme-toggle">Тема</button>
+				<nav>
+					<a href="index.html">Головна</a>
+					<a href="news.html">Новини</a>
+					<a href="documents.html" class="active">Документи</a>
+					<a href="contacts.html">Контакти</a>
+				</nav>
+			</div>
+		</header>
 
-  <main class="container">
-    <section>
-      <p>Мінімально обов'язкові документи:</p>
-      <ul id="doc-list">
-        <li><a href="documents/statut.pdf" download>Статут гімназії (PDF)</a></li>
-        <li><a href="documents/licenzia.pdf" download>Інформація про ліцензійний обсяг (PDF)</a></li>
-        <li><a href="documents/richniy-plan.pdf" download>Річний план роботи (PDF)</a></li>
-        <li><a href="documents/pravyla.pdf" download>Правила поведінки (PDF)</a></li>
-      </ul>
-    </section>
-  </main>
+		<main class="container">
+			<section>
+				<p>Мінімально обов'язкові документи:</p>
+				<ul id="doc-list">
+					<li><a href="documents/statut.pdf" download>Статут гімназії (PDF)</a></li>
+					<li><a href="documents/licenzia.pdf" download>Інформація про ліцензійний обсяг (PDF)</a></li>
+					<li><a href="documents/richniy-plan.pdf" download>Річний план роботи (PDF)</a></li>
+					<li><a href="documents/pravyla.pdf" download>Правила поведінки (PDF)</a></li>
+				</ul>
+			</section>
+		</main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© Вучківська гімназія</p>
-    </div>
-  </footer>
-</body>
+		<footer class="site-footer">
+			<div class="container">
+				<p>© Вучківська гімназія</p>
+			</div>
+		</footer>
+		<script src="assets/js/theme-toggle.js"></script>
+	</body>
 </html>
