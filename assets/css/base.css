@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  /* Кольори */
+  --bg: #f9fbfb;
+  --bg-card: #ffffff;
+  --primary: #23665a;
+  --primary-soft: #e6f2f1;
+  --text: #2a3a3a;
+  --text-muted: #6a7a73;
+  --border: #dce8e6;
+
+  /* Тіні */
+  --shadow-sm: 0 1px 6px rgb(0 0 0 / 0.08);
+  --shadow-md: 0 6px 20px rgb(0 0 0 / 0.12);
+
+  /* Радіуси */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+
+  /* Відступи */
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+h2 {
+  color: #2a4d45;
+  margin-top: 40px;
+  font-weight: 600;
+}
+
+.small {
+  color: #6a7a73;
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
