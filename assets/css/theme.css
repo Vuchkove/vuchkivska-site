@@ -37,3 +37,31 @@ body.dark .news-item:hover {
 body.dark .small {
 	color: #a0cbb5;
 }
+
+/* ===== Темна тема футера ===== */
+
+body.dark .footer {
+	background: #111827;
+	border-top: 1px solid #1f2933;
+}
+
+body.dark .footer-column h3 {
+	color: #e5e7eb;
+}
+
+body.dark .footer-column p {
+	color: #b7e3d2;
+}
+
+body.dark .footer-column a {
+	color: #60a5fa;
+}
+
+body.dark .footer-column a:hover {
+	color: #93c5fd;
+}
+
+body.dark .footer-bottom {
+	color: #a0d8c0;
+	border-top: 1px solid #1f2933;
+}

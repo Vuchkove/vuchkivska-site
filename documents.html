@@ -32,11 +32,13 @@
 			</section>
 		</main>
 
-		<footer class="site-footer">
-			<div class="container">
-				<p>© Вучківська гімназія</p>
-			</div>
-		</footer>
+		<div id="footer"></div>
+
 		<script src="assets/js/theme-toggle.js"></script>
+		<script>
+			fetch("/footer.html")
+				.then((res) => res.text())
+				.then((html) => (document.getElementById("footer").innerHTML = html));
+		</script>
 	</body>
 </html>

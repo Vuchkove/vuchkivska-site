@@ -27,9 +27,14 @@
 			</div>
 		</main>
 
-		<footer class="site-footer">© Вучківська гімназія, 2025</footer>
+		<div id="footer"></div>
 
 		<script src="assets/js/news-loader.js"></script>
 		<script src="assets/js/theme-toggle.js"></script>
+		<script>
+			fetch("/footer.html")
+				.then((res) => res.text())
+				.then((html) => (document.getElementById("footer").innerHTML = html));
+		</script>
 	</body>
 </html>
