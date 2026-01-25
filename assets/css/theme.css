@@ -25,6 +25,10 @@ body.dark nav a.active {
 	color: #f0f0f0;
 }
 
+body.dark h2 {
+	color: #a0cbb5;
+}
+
 body.dark .news-item {
 	background: #242424;
 	box-shadow: 0 1px 4px rgb(0 0 0 / 0.4);
