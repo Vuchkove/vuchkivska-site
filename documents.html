@@ -6,19 +6,8 @@
 		<title>Документи — Вучківська гімназія</title>
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
-	<body>
-		<header class="site-header">
-			<div class="container">
-				<h1>Документи</h1>
-				<button id="theme-toggle" aria-label="Перемикач теми" class="theme-toggle">Тема</button>
-				<nav>
-					<a href="index.html">Головна</a>
-					<a href="news.html">Новини</a>
-					<a href="documents.html" class="active">Документи</a>
-					<a href="contacts.html">Контакти</a>
-				</nav>
-			</div>
-		</header>
+	<body data-page="documents" data-title="Документи">
+		<div id="header"></div>
 
 		<main class="container">
 			<section>
@@ -34,9 +23,10 @@
 
 		<div id="footer"></div>
 
+		<script src="assets/js/header.js"></script>
 		<script src="assets/js/theme-toggle.js"></script>
 		<script>
-			fetch("/footer.html")
+			fetch("/partials/footer.html")
 				.then((res) => res.text())
 				.then((html) => (document.getElementById("footer").innerHTML = html));
 		</script>

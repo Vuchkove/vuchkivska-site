@@ -1,4 +1,3 @@
-const btn = document.getElementById("theme-toggle");
 const body = document.body;
 
 function applyTheme(theme) {
@@ -10,18 +9,22 @@ function applyTheme(theme) {
 	localStorage.setItem("theme", theme);
 }
 
-btn.addEventListener("click", () => {
-	const current = body.classList.contains("dark") ? "dark" : "light";
-	applyTheme(current === "dark" ? "light" : "dark");
-});
+function initThemeToggle() {
+	const btn = document.getElementById("theme-toggle");
+	if (!btn) return;
 
-document.addEventListener("DOMContentLoaded", () => {
+	btn.addEventListener("click", () => {
+		const current = body.classList.contains("dark") ? "dark" : "light";
+		applyTheme(current === "dark" ? "light" : "dark");
+	});
+}
+
+(function () {
 	const saved = localStorage.getItem("theme");
 	if (saved) {
 		applyTheme(saved);
 	} else {
-		// Якщо нема вибору, застосувати системну тему
-		const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+		const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 		applyTheme(prefersDark ? "dark" : "light");
 	}
-});
+})();
