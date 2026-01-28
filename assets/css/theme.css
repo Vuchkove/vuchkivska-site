@@ -42,6 +42,19 @@ body.dark .small {
 	color: #a0cbb5;
 }
 
+body.dark .document-card {
+	background: #242424;
+	border-left-color: #3a6b59;
+}
+
+body.dark .doc-title {
+	color: #a0d8c0;
+}
+
+body.dark .doc-meta {
+	color: #9fbfb0;
+}
+
 /* ===== Темна тема футера ===== */
 
 body.dark .footer {
