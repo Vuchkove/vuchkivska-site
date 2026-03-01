@@ -30,7 +30,7 @@
 		<script src="assets/js/header.js"></script>
 		<script src="assets/js/theme-toggle.js"></script>
 		<script>
-			fetch("/partials/footer.html")
+			fetch("./partials/footer.html")
 				.then((res) => res.text())
 				.then((html) => (document.getElementById("footer").innerHTML = html));
 		</script>
