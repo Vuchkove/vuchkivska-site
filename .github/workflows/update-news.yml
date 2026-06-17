@@ -14,7 +14,7 @@ jobs:
 
       - name: Download latest news from Facebook
         run: |
-          curl -s "https://rss.app/feeds/v1.1/YVxBG5SHs7KGXckm.json" -o news.json
+          curl -L -s "https://rss.app/feeds/v1.1/YVxBG5SHs7KGXckm.json" -o fresh_news.json
 
       - name: Merge News Script
         run: node merge-news.js
