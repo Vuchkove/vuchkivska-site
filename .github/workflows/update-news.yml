@@ -2,9 +2,8 @@ name: Update School News
 
 on:
   schedule:
-    # Запуск щодня о 00:00 за координованим часом (UTC)
     - cron: '0 0 * * *'
-  workflow_dispatch: # Дозволяє запускати робота вручну кнопкою для перевірки
+  workflow_dispatch:
 
 jobs:
   update-json:
@@ -13,15 +12,59 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download latest news from Facebook via FetchRSS
+      - name: Fetch and Merge News
         run: |
-          # Завантажуємо свіжий JSON і перезаписуємо ваш news.json
+          # Завантажуємо 5 найсвіжіших новин у тимчасовий файл
           curl -s "https://rss.app/feeds/v1.1/YVxBG5SHs7KGXckm.json" -o news.json
+
+          # Запускаємо вбудований скрипт для склеювання даних
+          node -e '
+            const fs = require("fs");
+
+            try {
+              // 1. Читаємо свіжі новини від генератора
+              const freshData = JSON.parse(fs.readFileSync("fresh_news.json", "utf8"));
+              const freshItems = freshData.items || [];
+
+              // 2. Читаємо старі новини, які вже були на сайті
+              let existingData = { version: "https://jsonfeed.org/version/1.1", items: [] };
+              if (fs.existsSync("news.json")) {
+                try {
+                  existingData = JSON.parse(fs.readFileSync("news.json", "utf8"));
+                  if (!existingData.items) existingData.items = [];
+                } catch (e) {
+                  console.log("Старий news.json порожній або пошкоджений, створюємо новий.");
+                }
+              }
+
+              // 3. Обєднуємо списки (свіжі додаємо на початок)
+              const combinedItems = [...freshItems, ...existingData.items];
+
+              // 4. Видаляємо дублікати за унікальним ID новини
+              const uniqueItems = [];
+              const seenIds = new Set();
+
+              for (const item of combinedItems) {
+                if (item && item.id && !seenIds.has(item.id)) {
+                  seenIds.add(item.id);
+                  uniqueItems.push(item);
+                }
+              }
+
+              // Лишаємо структуру JSON Feed і записуємо чистий результат назад в news.json
+              existingData.items = uniqueItems;
+              fs.writeFileSync("news.json", JSON.stringify(existingData, null, 2), "utf8");
+              console.log(`Успішно обєднано! Загальна кількість новин в архіві: ${uniqueItems.length}`);
+
+            } catch (error) {
+              console.error("Помилка під час обробки файлів:", error);
+              process.exit(1);
+            }
+          '
 
       - name: Commit and Push changes
         run: |
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
           git add news.json
-          # Перевіряємо, чи є зміни, щоб не робити пусті коміти
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Автоматичне оновлення новин з Facebook" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Архівування та оновлення новин з Facebook" && git push)
