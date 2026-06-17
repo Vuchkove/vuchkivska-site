@@ -1,0 +1,27 @@
+name: Update School News
+
+on:
+  schedule:
+    # Запуск щодня о 00:00 за координованим часом (UTC)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Дозволяє запускати робота вручну кнопкою для перевірки
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download latest news from Facebook via FetchRSS
+        run: |
+          # Завантажуємо свіжий JSON і перезаписуємо ваш news.json
+          curl -s "https://rss.app/feeds/v1.1/YVxBG5SHs7KGXckm.json" -o news.json
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "action@github.com"
+          git add news.json
+          # Перевіряємо, чи є зміни, щоб не робити пусті коміти
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Автоматичне оновлення новин з Facebook" && git push)
