@@ -43,7 +43,10 @@ function renderNews(items, container) {
 		const newsItem = document.createElement("div");
 		newsItem.className = "news-item";
 
-		// Форматування дати з "2026-06-17T12:46:59.000Z" у зручний вигляд "17.06.2026"
+		// Перевіряємо, чи є ця новина відеороликом (Reel або Video)
+		const isVideo = item.url && (item.url.includes("reel") || item.url.includes("video"));
+
+		// Форматування дати
 		let formattedDate = "";
 		if (item.date_published) {
 			const dateObj = new Date(item.date_published);
@@ -54,24 +57,38 @@ function renderNews(items, container) {
 			});
 		}
 
-		// Обробка картинок (беремо головне зображення посту, якщо воно є)
-		let imagesHTML = "";
+		// Обробка медіа (картинка або обкладинка відео)
+		let mediaHTML = "";
 		if (item.image) {
-			imagesHTML = `<div class="news-images">
-				<img src="${item.image}" alt="Фото новини" class="news-img" style="max-width: 100%; height: auto;" />
-			</div>`;
+			if (isVideo) {
+				// Якщо це відео, обгортаємо картинку в посилання і додаємо іконку Play
+				mediaHTML = `
+					<div class="news-images" style="position: relative; display: inline-block; cursor: pointer;">
+						<a href="${item.url}" target="_blank" rel="noopener noreferrer">
+							<img src="${item.image}" alt="Обкладинка відео" class="news-img" style="max-width: 100%; height: auto; display: block;" />
+							<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">▶</div>
+						</a>
+					</div>`;
+			} else {
+				// Якщо це звичайне фото
+				mediaHTML = `
+					<div class="news-images">
+						<img src="${item.image}" alt="Фото новини" class="news-img" style="max-width: 100%; height: auto;" />
+					</div>`;
+			}
 		}
 
-		// Формуємо фінальний HTML для кожної новини
-		// Якщо заголовок дублює посилання або занадто довгий, робимо його коротшим або загальним
 		const displayTitle = item.title && !item.title.startsWith("http") ? item.title.substring(0, 60) + (item.title.length > 60 ? "..." : "") : "Новина з Facebook";
+
+		// Кнопка знизу теж підлаштовується під тип контенту
+		const buttonText = isVideo ? "Дивитися відео на Facebook 🎬 →" : "Читати оригінал на Facebook →";
 
 		newsItem.innerHTML = `
 			<h3>${displayTitle}</h3>
 			<small>${formattedDate}</small>
 			<p style="white-space: pre-line;">${item.content_text || ""}</p>
-			${imagesHTML}
-			<p><a href="${item.url}" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em; color: #0066cc;">Читати оригінал на Facebook →</a></p>
+			${mediaHTML}
+			<p><a href="${item.url}" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em; color: #0066cc; font-weight: bold;">${buttonText}</a></p>
 		`;
 
 		container.appendChild(newsItem);
